@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+<script>
+  window.addEventListener('message', function (e) {
+    const d = e.data || {};
+    if (d.transactionType === 'playSound' && d.transactionFile) {
+      const a = new Audio(`sounds/${d.transactionFile}`);
+      a.volume = typeof d.transactionVolume === 'number' ? d.transactionVolume : 0.5;
+      a.play().catch(() => {});
+    }
+  });
+</script>
+</body>
+</html>
